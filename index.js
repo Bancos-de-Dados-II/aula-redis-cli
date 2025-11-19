@@ -11,7 +11,12 @@ async function conectar(){
     });
     console.log('Conectado ao Redis');
 
-    const retorno = await client.ping();
+    const retorno = await client.set('123', 'Teste2',{
+        expiration: {
+            type: 'EX',
+            value: 60
+        }
+    });
     console.log(retorno);
 
 }
